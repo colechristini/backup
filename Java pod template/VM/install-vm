@@ -1,0 +1,18 @@
+#!/bin/bash
+file="Oracle_VM_VirtualBox_Extension_Pack-$var1-$var2.vbox-extpack"
+var1=$(echo $version | cut -d 'r' -f 1)
+var2=$(echo $version | cut -d 'r' -f 2)
+curl "http://download.virtualbox.org/virtualbox/5.1.22/VirtualBox-5.1.22-115126-OSX.dmg" -o "vbox"
+brew install vbox
+curl "http://download.virtualbox.org/virtualbox/$var1/$file -O /tmp/$file"
+VBoxManage extpack install /tmp/$file --replace
+curl "http://dl-cdn.alpinelinux.org/alpine/v3.6/releases/x86_64/alpine-virt-3.6.2-x86_64.iso"
+VBoxManage createvm --name "Alpine" --register
+VBoxManage controlvm <Alpine> dvdattach <alpine-virt-3.6.2-x86_64.iso>
+VBoxManage storagectl "Alpine" --name "AlpineStore" --add "sata" --portcount 15 --hostiocache on --bootable on
+VBoxManage storageattach "Alpine"--storagectl "AlpineStore" --port 1 --device 1
+path = $pwd
+m ="/libs"
+z="/install-libs"
+p=$path$m$z
+sh $p

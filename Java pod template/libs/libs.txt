@@ -1,0 +1,2 @@
+http://www.jcuda.org/downloads/JCuda-All-0.8.0-bin-apple-x86_64.zip
+https://gigenet.dl.sourceforge.net/project/opencsv/opencsv/3.9/opencsv-3.9.jar

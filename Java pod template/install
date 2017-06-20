@@ -1,0 +1,12 @@
+#!/bin/bash
+$path = $pwd
+$file="Oracle_VM_VirtualBox_Extension_Pack-$var1-$var2.vbox-extpack"
+$m ="/vm"
+$z="/install-vm"
+$p=$path$m$z
+$var1=$(echo $version | cut -d 'r' -f 1)
+$var2=$(echo $version | cut -d 'r' -f 2)
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew update
+brew cask install java
+sh $p
