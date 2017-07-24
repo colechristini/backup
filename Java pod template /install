@@ -1,0 +1,23 @@
+#!/bin/bash
+#PATH="$PATH":$1//GitHub/Pod/Java pod template OSX/VM/install-vm
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+   sudo apt-get install openjdk-8-jdk
+elif [[ "$unamestr" == 'MacOS'||'OSX' ]]; then
+   platform='MacOS'
+   check=xcode-select -p
+   if [[$check==2]]; then
+    xcode-select --install
+  cd ~/Downloads
+  curl -O http://ftp.gnu.org/gnu/wget/wget-1.15.tar.gz
+  /configure --with-ssl=openssl
+  make
+  sudo make install
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  brew update
+  brew cask install java
+fi
+echo '$platform'
+./VM/install-vm

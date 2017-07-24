@@ -1,0 +1,9 @@
+#!/bin/bash
+path=$pwd
+m="/vm/install-vm"
+p=$path$m
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew update
+brew install python3
+pip install -U pip setupto
+source $p
